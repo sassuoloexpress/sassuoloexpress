@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prenotazione Volo | AirQuiz</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #d0eaff, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      background-color: #0074b8;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .navbar img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #003a63;
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-top: 1.2rem;
+      font-weight: bold;
+      color: #003a63;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 2rem;
+      width: 100%;
+      padding: 0.9rem;
+      background: #0074b8;
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #005f97;
+    }
+    #result {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .boarding-pass {
+      margin-top: 2rem;
+      background: #f7f7f7;
+      padding: 2rem;
+      border: 2px dashed #0074b8;
+      border-radius: 10px;
+      text-align: center;
+      display: none;
+    }
+    .boarding-pass h2 {
+      margin: 0 0 1rem;
+      color: #003a63;
+    }
+    .boarding-pass p {
+      margin: 0.5rem 0;
+    }
+    @media (max-width: 600px) {
+      .container {
+        margin: 1rem;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/airplane-take-off.png" alt="Logo AirQuiz">
+    AirQuiz - Prenota il tuo volo misterioso
+  </div>
+  <div class="container">
+    <h1>Inserisci i dati per la prenotazione</h1>
+    <form id="quizForm">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" required />
+
+      <label for="cognome">Cognome:</label>
+      <input type="text" id="cognome" required />
+
+      <label for="secondonome">Secondo nome:</label>
+      <input type="text" id="secondonome" required />
+
+      <label for="nazione">Nazionalità:</label>
+      <input type="text" id="nazione" required />
+
+      <label for="isola">Ultima destinazione:</label>
+      <input type="text" id="isola" required />
+
+      <label for="anno">Anno di nascita:</label>
+      <input type="text" id="anno" required />
+
+      <label for="difficile">Viaggio più impegnativo:</label>
+      <input type="text" id="difficile" required />
+
+      <label for="piatto">Piatto speciale al ritorno:</label>
+      <input type="text" id="piatto" required />
+
+      <button type="submit">Verifica e Prenota</button>
+    </form>
+    <div id="result"></div>
+    <div class="boarding-pass" id="boardingPass">
+      <h2>Carta d'imbarco</h2>
+      <p><strong>Destinazione:</strong> Via Adige 10</p>
+      <p><strong>Messaggio:</strong> Bravo! Ti aspetto qui per la tua prossima tappa.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const risposte = {
+        nome: 'daniele',
+        cognome: 'toscanelli',
+        secondonome: 'oceano',
+        nazione: 'italia',
+        isola: 'islanda',
+        anno: '1989',
+        difficile: 'corea del nord',
+        piatto: 'risotto alla milanese'
+      };
+
+      let corrette = true;
+      for (let key in risposte) {
+        const input = document.getElementById(key).value.trim().toLowerCase();
+        if (input !== risposte[key]) {
+          corrette = false;
+          break;
+        }
+      }
+
+      const resultDiv = document.getElementById('result');
+      const boardingPass = document.getElementById('boardingPass');
+
+      if (corrette) {
+        resultDiv.style.color = 'green';
+        resultDiv.textContent = "RISPOSTA ESATTA";
+        boardingPass.style.display = 'block';
+      } else {
+        resultDiv.style.color = 'red';
+        resultDiv.textContent = "Qualcosa non torna... riprova!";
+        boardingPass.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
+
