@@ -108,26 +108,26 @@
       <label for="nome">Nome:</label>
       <input type="text" id="nome" required />
 
-      <label for="cognome">Cognome:</label>
-      <input type="text" id="cognome" required />
-
       <label for="secondonome">Secondo nome:</label>
       <input type="text" id="secondonome" required />
 
-      <label for="nazione">Nazionalità:</label>
+      <label for="cognome">Cognome:</label>
+      <input type="text" id="cognome" required />
+
+      <label for="nazione">Nazione di origine:</label>
       <input type="text" id="nazione" required />
 
-      <label for="isola">Ultima destinazione:</label>
+      <label for="data">Data di nascita (dd/mm/yyyy):</label>
+      <input type="text" id="data" required />
+
+      <label for="isola">Ultimo paese visitato:</label>
       <input type="text" id="isola" required />
 
-      <label for="anno">Anno di nascita:</label>
-      <input type="text" id="anno" required />
-
-      <label for="difficile">Viaggio più impegnativo:</label>
+      <label for="difficile">Meta più impegnativa:</label>
       <input type="text" id="difficile" required />
 
-      <label for="piatto">Piatto speciale al ritorno:</label>
-      <input type="text" id="piatto" required />
+      <label for="citta">Città di origine:</label>
+      <input type="text" id="citta" required />
 
       <button type="submit">Verifica e Prenota</button>
     </form>
@@ -144,14 +144,14 @@
       e.preventDefault();
 
       const risposte = {
-        nome: 'daniele',
+        nome: 'edoardo',
+        secondonome: 'alberto',
         cognome: 'toscanelli',
-        secondonome: 'oceano',
         nazione: 'italia',
+        data: '05/05/1986',
         isola: 'islanda',
-        anno: '1989',
         difficile: 'corea del nord',
-        piatto: 'risotto alla milanese'
+        citta: 'genova'
       };
 
       let corrette = true;
@@ -179,4 +179,3 @@
   </script>
 </body>
 </html>
-
