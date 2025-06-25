@@ -114,28 +114,28 @@
       <label for="cognome">Cognome:</label>
       <input type="text" id="cognome" required />
 
-      <label for="nazione">Nazione di origine:</label>
+      <label for="data">Data di nascita (gg/mm/aaaa):</label>
+      <input type="text" id="data" required />
+
+      <label for="nazione">Nazionalità del passaporto:</label>
       <input type="text" id="nazione" required />
 
-      <label for="data">Data di nascita (dd/mm/yyyy):</label>
-      <input type="text" id="data" required />
+      <label for="citta">Residenza (città):</label>
+      <input type="text" id="citta" required />
 
       <label for="isola">Ultimo paese visitato:</label>
       <input type="text" id="isola" required />
 
-      <label for="difficile">Meta più impegnativa:</label>
-      <input type="text" id="difficile" required />
-
-      <label for="citta">Città di origine:</label>
-      <input type="text" id="citta" required />
+      <label for="destinazione">Paese di destinazione:</label>
+      <input type="text" id="destinazione" required />
 
       <button type="submit">Verifica e Prenota</button>
     </form>
     <div id="result"></div>
     <div class="boarding-pass" id="boardingPass">
       <h2>Carta d'imbarco</h2>
-      <p><strong>Destinazione:</strong> Rometta!</p>
-      <p><strong>Bravo!</strong>  Ti aspetto qui per la tua prossima tappa.</p>
+      <p><strong>Destinazione:</strong> Via Adige 10</p>
+      <p><strong>Messaggio:</strong> Bravo! Ti aspetto qui per la tua prossima tappa.</p>
     </div>
   </div>
 
@@ -144,22 +144,30 @@
       e.preventDefault();
 
       const risposte = {
-        nome: 'edoardo',
+        nome: 'enrico',
         secondonome: 'alberto',
-        cognome: 'toscanelli',
-        nazione: 'italia',
-        data: '05/05/1986',
+        cognome: 'morricone',
+        data: '07/11/1989',
+        nazione: ['singapore', 'singaporiana'],
+        citta: 'genova',
         isola: 'islanda',
-        difficile: 'corea del nord',
-        citta: 'genova'
+        destinazione: 'australia'
       };
 
       let corrette = true;
       for (let key in risposte) {
         const input = document.getElementById(key).value.trim().toLowerCase();
-        if (input !== risposte[key]) {
-          corrette = false;
-          break;
+        const valore = risposte[key];
+        if (Array.isArray(valore)) {
+          if (!valore.includes(input)) {
+            corrette = false;
+            break;
+          }
+        } else {
+          if (input !== valore) {
+            corrette = false;
+            break;
+          }
         }
       }
 
